@@ -367,9 +367,10 @@ firefox_spotify() {
 #|-----< Script start >-----|#
 cat<<"EOF"
 
-┬┌─┌┬┐┌─┐ ┌┬┐┌─┐┌┬┐┌─┐
-├┴┐ ││├┤───│││ │ │ └─┐
-┴ ┴─┴┘└─┘ ─┴┘└─┘ ┴ └─┘
+ _ __ ___  ___   ___  ___  ___  ___
+| / /| . \| __> | . \| . ||_ _|/ __>
+|  \ | | || _>  | | || | | | | \__ \
+|_\_\|___/|___> |___/`___' |_| <___/
 
 EOF
 
@@ -377,7 +378,7 @@ EOF
 DISTRO=$(awk -F= '/^ID=/{print $2}' /etc/os-release | tr -d '"')
 
 case $DISTRO in
-  arch | endeavouros | manjaro)
+  arch | endeavouros | manjaro )
     echo -e ":: Distro found ${DISTRO}"
     deps_arch
     ;;
@@ -389,9 +390,13 @@ case $DISTRO in
     echo -e ":: Distro found ${DISTRO}"
     deps_opensuse
     ;;
+    fedora | redhat | void )
+    echo -e ":: Distro found ${DISTRO}"
+    deps_fedora
+    ;;
   *)
     echo -e ":: ${red}${DISTRO}${nc} is unsupported for now :("
-    echo -e ":: Contact ${green}re1san${nc} on github :)"
+    echo -e ":: Contact ${green}QuantumMapleQC${nc} on Discord :)"
     exit 1
     ;;
 esac
@@ -451,23 +456,14 @@ case $DISTRO in
   #     ;;
 esac
 
-#|-----< Nvim Config >-----|#
-
-read -p "?: Do you want to install Neovim config? (y/n): " choice
-
-if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
-  git clone https://github.com/re1san/Kode ~/.config/nvim --depth 1
-  echo -e ":: [${green}Done${nc}], please open neovim by command 'nvim' after completion of script to install all plugins and colorscheme"
-else
-    echo ":: Neovim config installation skipped"
-fi
-
 cat<<"EOF"
 
-┌┬┐┌─┐┌┐┌┌─┐
- │││ ││││├┤ 
-─┴┘└─┘┘└┘└─┘
+ ___  _ _  ___  _ _  _ __ ___
+|_ _|| | || . || \ || / // __>
+ | | |   ||   ||   ||  \ \__ \
+ |_| |_|_||_|_||_\_||_\_\<___/
+
 
 EOF
 
-echo -e "${green}Follow the README for next steps, Thankyou! ^^${nc}"
+echo -e "${green}Thank you for using this clone of the original KDE dots thats been made from re1san${nc}"
